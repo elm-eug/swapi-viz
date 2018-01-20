@@ -3,6 +3,36 @@
 <head>
   <title>Star Wars</title>
   <script src="/app.js"></script>
+  <style>
+    * {
+      font-family: "Operator Mono", sans-serif;
+      font-style: italic;
+      font-weight:300;
+    }
+    h3 {
+      text-align: center;
+    }
+
+    .planet-wrap {
+      display: inline-block;
+      margin: 20px;
+    }
+
+    .planet {
+      display: inline-block;
+      border-radius: 50%;
+      box-shadow: inset 0 0 10px #000;
+      animation-name: spin;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
   <script>

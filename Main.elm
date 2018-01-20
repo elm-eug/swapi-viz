@@ -20,7 +20,7 @@ swapi =
 
 
 type alias Model =
-    { planets : WebData Planets }
+    { planets : WebData (List Planet) }
 
 
 type alias Planet =
@@ -29,20 +29,16 @@ type alias Planet =
     }
 
 
-type alias Planets =
-    List Planet
-
-
 initModel : Model
 initModel =
-    { planets = NotAsked }
+    { planets = Loading }
 
 
 type Msg
-    = PlanetsResp (WebData Planets)
+    = PlanetsResp (WebData (List Planet))
 
 
-planetsDecoder : JD.Decoder Planets
+planetsDecoder : JD.Decoder (List Planet)
 planetsDecoder =
     JD.at [ "results" ] <|
         JD.list <|
@@ -79,7 +75,46 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    toString model |> text
+    case model.planets of
+        Success planets ->
+            div [] (List.map planetView planets)
+
+        Loading ->
+            h1 [] [ text "Loading..." ]
+
+        _ ->
+            text <| toString model
+
+
+planetView : Planet -> Html Msg
+planetView planet =
+    let
+        width =
+            String.toFloat planet.diameter |> Result.map ((*) 0.01)
+
+        widthPx =
+            case width of
+                Ok w ->
+                    (toString w) ++ "px"
+
+                _ ->
+                    "0px"
+    in
+        div
+            [ class "planet-wrap", style [ ( "width", widthPx ) ] ]
+            [ div
+                [ class "planet"
+                , style
+                    [ ( "width", widthPx )
+                    , ( "height", widthPx )
+                    , ( "background-image", "-webkit-radial-gradient(45px 45px, circle cover, pink, purple)" )
+                    ]
+                ]
+                []
+            , h3
+                []
+                [ text planet.name ]
+            ]
 
 
 

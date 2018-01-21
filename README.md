@@ -2,6 +2,9 @@
 
 Visualize the Star Wars API.
 
+![planets](https://user-images.githubusercontent.com/857356/35189647-37e7a270-fe04-11e7-85dc-f7b31be7f0b7.gif)
+
+
 ## Elm Setup
 
 Learn some Elm using these [resources](https://workflowy.com/s/Gs7F.2YD4XBJsWc).
@@ -28,5 +31,5 @@ Then add Elm language support to your editor and you will have a robust enviornm
 
 # Project Setup
 
-Run `elm-reactor` and visit http://localhost:8000/Main.elm
+Run `elm-make Main.elm --output=dist/app.js` and open `dist/index.html` in your browser. Use this [chrome exension](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi/related).
 

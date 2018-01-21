@@ -17,8 +17,8 @@ You can write & compile Elm using [Ellie](https://ellie-app.com). Or...
  - `elm-reactor` — get a project going quickly
  - `elm-make` — compile Elm code directly
  - `elm-package` — download packages
- - `elm-format` - makes code easy to read, write & maintain
- - `elm-oracle` - query project source code & docs
+ - `elm-format` — makes code easy to read, write & maintain
+ - `elm-oracle` — query project source code & docs
 
 Then add Elm language support to your editor and you will have a robust enviornment for devloping Elm apps.
 
